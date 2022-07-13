@@ -21,8 +21,24 @@ class _CompleteState extends State<Complete> {
         centerTitle: true,
         title: showText("FLUTTER ID", Colors.white),
       ),
-      body: Column(
-        children: [cardInformation()],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            cardInformation(),
+            showDivider(),
+            rowText("Stack", "Flutter"),
+            space(),
+            rowText("id", "1054/2021"),
+            showDivider(),
+            rowIcon(Icons.person_sharp, "Google"),
+            space(),
+            rowIcon(Icons.notification_add, "Facebook"),
+            space(),
+            rowIcon(Icons.local_airport, "Github")
+          ],
+        ),
       ),
     );
   }
@@ -31,7 +47,7 @@ class _CompleteState extends State<Complete> {
     return Text(
       text,
       style:
-          TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: choice),
+          TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: choice),
     );
   }
 
@@ -58,6 +74,7 @@ class _CompleteState extends State<Complete> {
 
   Widget rowText(String text_1, String text_2) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         showText(text_1, Colors.blue),
         const SizedBox(
@@ -69,6 +86,37 @@ class _CompleteState extends State<Complete> {
         ),
         showText(text_2, Colors.black)
       ],
+    );
+  }
+
+  Widget rowIcon(IconData icon, String text_2) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon),
+        const SizedBox(
+          width: 7,
+        ),
+        showText(":", Colors.red),
+        const SizedBox(
+          width: 7,
+        ),
+        showText(text_2, Colors.black)
+      ],
+    );
+  }
+
+  Widget showDivider() {
+    return const Divider(
+      thickness: 1,
+      color: Colors.black,
+      height: 40,
+    );
+  }
+
+  Widget space() {
+    return const SizedBox(
+      height: 6,
     );
   }
 }
